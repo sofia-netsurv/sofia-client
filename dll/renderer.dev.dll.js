@@ -111,6 +111,18 @@ eval("module.exports = @fortawesome/fontawesome-free;\n\n//# sourceURL=webpack:/
 
 /***/ }),
 
+/***/ "@material-ui/core":
+/*!************************************!*\
+  !*** external "@material-ui/core" ***!
+  \************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = @material-ui/core;\n\n//# sourceURL=webpack://renderer/external_%22@material-ui/core%22?");
+
+/***/ }),
+
 /***/ "connected-react-router":
 /*!*****************************************!*\
   !*** external "connected-react-router" ***!
@@ -180,6 +192,18 @@ eval("module.exports = electron-log;\n\n//# sourceURL=webpack://renderer/externa
 /***/ (function(module, exports) {
 
 eval("module.exports = electron-updater;\n\n//# sourceURL=webpack://renderer/external_%22electron-updater%22?");
+
+/***/ }),
+
+/***/ "flow":
+/*!***********************!*\
+  !*** external "flow" ***!
+  \***********************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = flow;\n\n//# sourceURL=webpack://renderer/external_%22flow%22?");
 
 /***/ }),
 
