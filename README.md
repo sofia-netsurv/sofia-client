@@ -8,13 +8,15 @@ Clone and install the sofia-client repo:
 
     git clone https://github.com/ekwoodrich/sofia-client.git
 
-To install the dependices:
+To install the dependencies:
 
     yarn
     
 To run the program
 
     yarn start
+    
+Sofia Client is based on [electron-react-boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate), and more information about its dependencies and install procedure can be found on the README.
 
 ## License
 This program is licensed under the "MIT License".  Please
