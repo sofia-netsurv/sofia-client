@@ -8,6 +8,37 @@ import TextField from '@material-ui/core/TextField';
 import routes from '../constants/routes';
 import styles from './Home.css';
 import {PythonShell} from 'python-shell';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+
+const useStyles = makeStyles(theme => ({
+  '@global': {
+    body: {
+      backgroundColor: theme.palette.common.white,
+    },
+  },
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
 
 export default class Home extends React.Component {
   props: Props;
@@ -15,6 +46,7 @@ export default class Home extends React.Component {
     super(props);
     this.state = {ip: ''};
 }
+
 
 
   handleChange = (event) => {
@@ -39,13 +71,32 @@ export default class Home extends React.Component {
   }
 
   render() {
+
     return (
-      <>
-      <TextField id="ip" type="text" value = {this.state.ip} onChange={this.handleChange} />
-      <Button variant="contained" onClick = {this.handleClick} color="primary">
-        Connect
-      </Button>
-      </>
+    <Container component="main" maxWidth="xs">
+        <div>
+
+        <Typography component="h1" variant="h5">
+          Select Camera
+        </Typography>
+          
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            id="ip"
+            label="IP address"
+            name="ip"
+            autoFocus
+            value = {this.state.ip}
+            onChange={this.handleChange}
+          />
+
+        <Button variant="contained" onClick = {this.handleClick} color="primary">
+          Connect
+        </Button>
+        </div>
+    </Container>
     );
   }
 }
