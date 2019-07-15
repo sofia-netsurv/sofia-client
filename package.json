@@ -262,6 +262,7 @@
     "electron-updater": "^4.0.6",
     "flow": "^0.2.3",
     "history": "^4.9.0",
+    "python-shell": "^1.0.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-hot-loader": "^4.8.2",

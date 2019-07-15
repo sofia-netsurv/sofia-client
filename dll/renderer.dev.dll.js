@@ -219,6 +219,18 @@ eval("module.exports = history;\n\n//# sourceURL=webpack://renderer/external_%22
 
 /***/ }),
 
+/***/ "python-shell":
+/*!*******************************!*\
+  !*** external "python-shell" ***!
+  \*******************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = python-shell;\n\n//# sourceURL=webpack://renderer/external_%22python-shell%22?");
+
+/***/ }),
+
 /***/ "react":
 /*!************************!*\
   !*** external "react" ***!
