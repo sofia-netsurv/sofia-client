@@ -6,9 +6,9 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap';
 body {
   position: relative;
-  color: white;
+  color: #cc0096;
   height: 100vh;
-  background-color: #cc0096;
+  background-color: white;
   font-family: Arial, Helvetica, Helvetica Neue, serif;
   overflow-y: hidden;
 }
