@@ -1,0 +1,3 @@
+[submodule "python-netsurv"]
+	path = python-netsurv
+	url = git@github.com:ekwoodrich/python-netsurv.git
