@@ -85,6 +85,7 @@ export default class Home extends React.Component {
             margin="normal"
             fullWidth
             id="ip"
+            backgroundColor= "#cc0096"
             label="IP address"
             name="ip"
             autoFocus
