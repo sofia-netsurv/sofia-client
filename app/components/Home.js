@@ -25,6 +25,8 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+        justifyContent: 'space-between'
+
   },
   avatar: {
     margin: theme.spacing(1),
@@ -47,8 +49,6 @@ export default class Home extends React.Component {
     this.state = {ip: ''};
 }
 
-
-
   handleChange = (event) => {
       this.setState({ip: event.target.value});
 
@@ -66,16 +66,19 @@ export default class Home extends React.Component {
 
     netsurv.on('message', function (message) {
       // received a message sent from the Python script (a simple "print" statement)
-      console.log(message);
+      console.log(JSON.parse(message));
+
+      
+
     });
   }
 
   render() {
 
     return (
-    <Container component="main" maxWidth="xs">
-        <div>
 
+    <Container component="main" maxWidth="xs">
+      
         <Typography component="h1" variant="h5">
           Select Camera
         </Typography>
@@ -85,18 +88,19 @@ export default class Home extends React.Component {
             margin="normal"
             fullWidth
             id="ip"
-            backgroundColor= "#cc0096"
             label="IP address"
             name="ip"
             autoFocus
             value = {this.state.ip}
             onChange={this.handleChange}
           />
-
-        <Button variant="contained" onClick = {this.handleClick} color="primary">
+        <Button variant="contained"  onClick = {this.handleClick}>
           Connect
         </Button>
-        </div>
+
+        <Button variant="contained"  onClick = {this.handleClick}>
+          Browse
+        </Button>
     </Container>
     );
   }

@@ -267,6 +267,30 @@ eval("module.exports = react-hot-loader;\n\n//# sourceURL=webpack://renderer/ext
 
 /***/ }),
 
+/***/ "react-native":
+/*!*******************************!*\
+  !*** external "react-native" ***!
+  \*******************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = react-native;\n\n//# sourceURL=webpack://renderer/external_%22react-native%22?");
+
+/***/ }),
+
+/***/ "react-native-navigation":
+/*!******************************************!*\
+  !*** external "react-native-navigation" ***!
+  \******************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = react-native-navigation;\n\n//# sourceURL=webpack://renderer/external_%22react-native-navigation%22?");
+
+/***/ }),
+
 /***/ "react-redux":
 /*!******************************!*\
   !*** external "react-redux" ***!
