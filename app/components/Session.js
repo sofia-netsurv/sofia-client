@@ -1,24 +1,15 @@
 // @flow
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import styles from './Counter.css';
-import routes from '../constants/routes';
-
-
-type Props = {
-  counter: number
-};
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import styles from "./Counter.css";
+import routes from "../constants/routes";
 
 export default class Session extends React.Component {
-  render() {
-    const {
-      counter
-    } = this.props;
-    return (
+  constructor(props) {
+    super(props);
+  }
 
-        <Button variant="contained"  onClick = {this.handleClick}>
-          Session
-        </Button>
-    )
+  render() {
+    return <h1>Session</h1>;
   }
 }
