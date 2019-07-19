@@ -61,9 +61,9 @@ typings/
 .next
 
 #webpack output
-main.dev.js
 main.prod.js
 main.prod.js.map
 
 #distribution files
 dist
+app/dist
