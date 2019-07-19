@@ -41,7 +41,8 @@
       "git add"
     ],
     "{*.json,.{babelrc,eslintrc,prettierrc,stylelintrc}}": [
-      "git add"
+      "git add",
+      "prettier --ignore-path .eslintignore --single-quote --write"
     ],
     "*.{css,scss}": [
       "git add"
