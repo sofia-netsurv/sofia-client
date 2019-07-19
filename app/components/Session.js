@@ -1,8 +1,5 @@
 // @flow
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import styles from "./Counter.css";
-import routes from "../constants/routes";
+import React from "react";
 
 export default class Session extends React.Component {
   constructor(props) {
