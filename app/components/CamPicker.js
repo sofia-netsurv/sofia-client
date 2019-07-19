@@ -1,25 +1,23 @@
 // @flow
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import styles from './Counter.css';
-import routes from '../constants/routes';
-
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import styles from "./Counter.css";
+import routes from "../constants/routes";
+import Button from "@material-ui/core/Button";
 
 type Props = {
   counter: number
 };
 
 export default class CamPicker extends Component<Props> {
-    props: Props;
+  props: Props;
 
   render() {
-    const {
-      counter
-    } = this.props;
+    const { counter } = this.props;
     return (
-        <Button variant="contained"  onClick = {this.handleClick}>
-          Picker
-        </Button>
-    )
+      <Button variant="contained" onClick={this.handleClick}>
+        Picker
+      </Button>
+    );
   }
 }

@@ -123,6 +123,18 @@ eval("module.exports = @material-ui/core;\n\n//# sourceURL=webpack://renderer/ex
 
 /***/ }),
 
+/***/ "@material-ui/icons":
+/*!*************************************!*\
+  !*** external "@material-ui/icons" ***!
+  \*************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = @material-ui/icons;\n\n//# sourceURL=webpack://renderer/external_%22@material-ui/icons%22?");
+
+/***/ }),
+
 /***/ "connected-react-router":
 /*!*****************************************!*\
   !*** external "connected-react-router" ***!
@@ -192,6 +204,18 @@ eval("module.exports = electron-log;\n\n//# sourceURL=webpack://renderer/externa
 /***/ (function(module, exports) {
 
 eval("module.exports = electron-updater;\n\n//# sourceURL=webpack://renderer/external_%22electron-updater%22?");
+
+/***/ }),
+
+/***/ "eslint-plugin-react-native":
+/*!*********************************************!*\
+  !*** external "eslint-plugin-react-native" ***!
+  \*********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = eslint-plugin-react-native;\n\n//# sourceURL=webpack://renderer/external_%22eslint-plugin-react-native%22?");
 
 /***/ }),
 
@@ -276,18 +300,6 @@ eval("module.exports = react-hot-loader;\n\n//# sourceURL=webpack://renderer/ext
 /***/ (function(module, exports) {
 
 eval("module.exports = react-native;\n\n//# sourceURL=webpack://renderer/external_%22react-native%22?");
-
-/***/ }),
-
-/***/ "react-native-navigation":
-/*!******************************************!*\
-  !*** external "react-native-navigation" ***!
-  \******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-eval("module.exports = react-native-navigation;\n\n//# sourceURL=webpack://renderer/external_%22react-native-navigation%22?");
 
 /***/ }),
 

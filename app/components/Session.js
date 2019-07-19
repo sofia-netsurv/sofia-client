@@ -9,9 +9,7 @@ type Props = {
   counter: number
 };
 
-export default class Session extends Component<Props> {
-    props: Props;
-
+export default class Session extends React.Component {
   render() {
     const {
       counter

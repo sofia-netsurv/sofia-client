@@ -1,14 +1,13 @@
 // @flow
-import React, { Component } from 'react';
-import Session from '../components/Session';
-import Button from '@material-ui/core/Button';
+import React, { Component } from "react";
+import Session from "../components/Session";
 
 type Props = {};
 
-export default class Session extends Component<Props> {
+export default class SessionPage extends Component<Props> {
   props: Props;
 
   render() {
-    return <Home />;
+    return <Session />;
   }
 }
