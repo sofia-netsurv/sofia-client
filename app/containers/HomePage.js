@@ -1,7 +1,6 @@
 // @flow
-import React, { Component } from 'react';
-import Home from '../components/Home';
-import Button from '@material-ui/core/Button';
+import React, { Component } from "react";
+import Home from "../components/Home";
 
 type Props = {};
 
