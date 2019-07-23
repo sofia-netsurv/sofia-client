@@ -243,6 +243,54 @@ eval("module.exports = history;\n\n//# sourceURL=webpack://renderer/external_%22
 
 /***/ }),
 
+/***/ "install":
+/*!**************************!*\
+  !*** external "install" ***!
+  \**************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = install;\n\n//# sourceURL=webpack://renderer/external_%22install%22?");
+
+/***/ }),
+
+/***/ "jsmpeg":
+/*!*************************!*\
+  !*** external "jsmpeg" ***!
+  \*************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = jsmpeg;\n\n//# sourceURL=webpack://renderer/external_%22jsmpeg%22?");
+
+/***/ }),
+
+/***/ "node-rtsp-stream":
+/*!***********************************!*\
+  !*** external "node-rtsp-stream" ***!
+  \***********************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = node-rtsp-stream;\n\n//# sourceURL=webpack://renderer/external_%22node-rtsp-stream%22?");
+
+/***/ }),
+
+/***/ "npm":
+/*!**********************!*\
+  !*** external "npm" ***!
+  \**********************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = npm;\n\n//# sourceURL=webpack://renderer/external_%22npm%22?");
+
+/***/ }),
+
 /***/ "python-shell":
 /*!*******************************!*\
   !*** external "python-shell" ***!
