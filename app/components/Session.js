@@ -7,6 +7,7 @@ export default class Session extends React.Component {
   constructor(props) {
     super(props);
   }
+
   startStream = (ip, wsPort) => {};
 
   connect = wsPort => {

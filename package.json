@@ -270,6 +270,7 @@
     "jsmpeg": "^1.0.0",
     "node-rtsp-stream": "^0.0.8",
     "npm": "^6.10.2",
+    "onvif": "^0.6.0",
     "python-shell": "^1.0.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

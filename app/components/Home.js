@@ -13,6 +13,7 @@ import { browserHistory } from "react-router";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import routes from "../constants/routes";
+import CamPicker from "../components/CamPicker";
 
 class Home extends Component {
   constructor(props) {
@@ -53,31 +54,15 @@ class Home extends Component {
       return <Redirect to="{routes.COUNTER}" />;
     } else {
       return (
-        <Container component="main" maxWidth="xs">
+        <>
           <Typography component="h1" variant="h5">
             Select Camera
           </Typography>
-
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            id="ip"
-            label="IP address"
-            name="ip"
-            autoFocus
-            value={this.state.ip}
-            onChange={this.handleChange}
-          />
-
+          <CamPicker />
           <Button variant="contained" onClick={this.handleClick}>
             Connect
           </Button>
-
-          <Button variant="contained" onClick={this.handleClick}>
-            Browse
-          </Button>
-        </Container>
+        </>
       );
     }
   }

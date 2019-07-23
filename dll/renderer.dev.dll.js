@@ -291,6 +291,18 @@ eval("module.exports = npm;\n\n//# sourceURL=webpack://renderer/external_%22npm%
 
 /***/ }),
 
+/***/ "onvif":
+/*!************************!*\
+  !*** external "onvif" ***!
+  \************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = onvif;\n\n//# sourceURL=webpack://renderer/external_%22onvif%22?");
+
+/***/ }),
+
 /***/ "python-shell":
 /*!*******************************!*\
   !*** external "python-shell" ***!

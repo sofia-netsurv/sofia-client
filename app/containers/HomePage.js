@@ -1,13 +1,19 @@
 // @flow
 import React, { Component } from "react";
 import Home from "../components/Home";
+import Container from "@material-ui/core/Container";
 
-type Props = {};
-
-export default class HomePage extends Component<Props> {
-  props: Props;
+export default class HomePage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
   render() {
-    return <Home />;
+    return (
+      <Container component="main" maxWidth="xs">
+        <Home />
+      </Container>
+    );
   }
 }
