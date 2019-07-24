@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // @flow
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
@@ -30,7 +31,7 @@ export default class CamPicker extends React.Component {
         <VideocamIcon>
           <InboxIcon />
         </VideocamIcon>
-        <ListItemText primary="{this.props.ip}" />
+        <ListItemText primary={this.props.ip} />
       </ListItem>
     );
   }
