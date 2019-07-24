@@ -1,8 +1,8 @@
 // @flow
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import styles from './Counter.css';
-import routes from '../constants/routes';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import styles from "./Counter.css";
+import routes from "../constants/routes";
 
 type Props = {
   increment: () => void,
