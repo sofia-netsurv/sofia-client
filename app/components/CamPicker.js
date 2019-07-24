@@ -14,6 +14,7 @@ import DraftsIcon from "@material-ui/icons/Drafts";
 import VideocamIcon from "@material-ui/icons/VideocamOutlined";
 import TextField from "@material-ui/core/TextField";
 import CamPickerItem from "../components/CamPickerItem";
+import IpPicker from "../components/IpPicker";
 
 function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
@@ -79,17 +80,7 @@ export default class CamPicker extends React.Component {
   render() {
     return (
       <div>
-        <TextField
-          variant="outlined"
-          margin="normal"
-          fullWidth
-          id="ip"
-          label="IP address"
-          name="ip"
-          autoFocus
-          value={this.state.ip}
-          onChange={this.handleChange}
-        />
+        <IpPicker />
         <List component="nav" aria-label="Main mailbox folders">
           <CamPickerItem ip="192.168.1.1" />
         </List>
