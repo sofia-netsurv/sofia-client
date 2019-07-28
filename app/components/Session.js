@@ -9,6 +9,7 @@ import routes from "../constants/routes";
 
 export default class Session extends React.Component {
   constructor(props) {
+    console.log(props);
     super(props);
   }
 
@@ -35,11 +36,12 @@ export default class Session extends React.Component {
   render() {
     return (
       <>
-        <h1>Session</h1>;
+        <h1>{this.props.location.state.ip}</h1>
+        <Button>Settings</Button>
+        <Button>View Stream</Button>
         <Button component={Link} to={routes.HOME}>
           Back
         </Button>
-        ;
       </>
     );
   }

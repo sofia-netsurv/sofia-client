@@ -25,7 +25,16 @@ export default class CamPicker extends React.Component {
 
   render() {
     return (
-      <ListItem button component={Link} to={routes.SESSION}>
+      <ListItem
+        button
+        component={Link}
+        to={{
+          pathname: routes.SESSION,
+          state: {
+            ip: this.props.ip
+          }
+        }}
+      >
         <VideocamIcon>
           <InboxIcon />
         </VideocamIcon>
