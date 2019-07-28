@@ -38,7 +38,7 @@ export default class Session extends React.Component {
     return (
       <>
         <h1>{this.props.location.state.ip}</h1>
-        <Button>Settings</Button>
+        <Button>Camera Config</Button>
         <Button>View Stream</Button>
         <Button component={Link} to={routes.HOME}>
           Back
