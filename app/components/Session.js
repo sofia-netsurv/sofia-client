@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // @flow
 import React from "react";
 import jsmpeg from "jsmpeg";
