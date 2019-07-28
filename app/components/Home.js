@@ -1,9 +1,9 @@
 // @flow
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Stream from "node-rtsp-stream";
-import { Link } from "react-router-dom";
 
 import { PythonShell } from "python-shell";
 import Typography from "@material-ui/core/Typography";
@@ -49,22 +49,17 @@ class Home extends Component {
   };
 
   render() {
-    console.log(this.state.toSession);
-    if (this.state.toSession == true) {
-      return <Redirect to="{routes.COUNTER}" />;
-    } else {
-      return (
-        <>
-          <Typography component="h1" variant="h5">
-            Select Camera
-          </Typography>
-          <CamPicker />
-          <Button variant="contained" onClick={this.handleClick}>
-            Connect
-          </Button>
-        </>
-      );
-    }
+    return (
+      <>
+        <Typography component="h1" variant="h5">
+          Select Camera
+        </Typography>
+        <CamPicker />
+        <Button variant="contained" onClick={this.handleClick}>
+          Connect
+        </Button>
+      </>
+    );
   }
 }
 export default withRouter(Home);

@@ -14,10 +14,8 @@ import InboxIcon from "@material-ui/icons/Inbox";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import VideocamIcon from "@material-ui/icons/VideocamOutlined";
 import TextField from "@material-ui/core/TextField";
-
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
+import { Link } from "react-router-dom";
+import routes from "../constants/routes";
 
 export default class CamPicker extends React.Component {
   constructor(props) {
@@ -27,7 +25,7 @@ export default class CamPicker extends React.Component {
 
   render() {
     return (
-      <ListItem button>
+      <ListItem button component={Link} to={routes.SESSION}>
         <VideocamIcon>
           <InboxIcon />
         </VideocamIcon>

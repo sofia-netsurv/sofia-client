@@ -3,6 +3,10 @@ import React from "react";
 import jsmpeg from "jsmpeg";
 import Stream from "node-rtsp-stream";
 
+import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
+import routes from "../constants/routes";
+
 export default class Session extends React.Component {
   constructor(props) {
     super(props);
@@ -29,6 +33,14 @@ export default class Session extends React.Component {
   };
 
   render() {
-    return <h1>Session</h1>;
+    return (
+      <>
+        <h1>Session</h1>;
+        <Button component={Link} to={routes.HOME}>
+          Back
+        </Button>
+        ;
+      </>
+    );
   }
 }
