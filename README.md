@@ -1,5 +1,7 @@
-# Sofia Client 
-[![Build Status](https://img.shields.io/azure-devops/build/ewoodrich/e5356f4d-e3de-4404-a508-1dade5f0cb6a/2.svg)](https://ewoodrich.visualstudio.com/python-netsurv/_build?definitionId=2)
+# Sofia Client
+[![Build Status](https://dev.azure.com/ewoodrich/sofia/_apis/build/status/sofia-netsurv.sofia-client?branchName=master)](https://dev.azure.com/ewoodrich/sofia/_build/latest?definitionId=3&branchName=master)
+
+**Sofia Client is still in WIP mode not yet ready for release**
 
 Copyright (c) 2019 Ebraheem AlAthari and Eliot Woodrich
 
