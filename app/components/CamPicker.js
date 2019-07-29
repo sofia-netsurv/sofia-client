@@ -23,15 +23,12 @@ function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
 
-
-
 export default class CamPicker extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ip: "", detectedDevices: [], toSession: false };
     this.handleChange = this.handleChange.bind(this);
     this.probeOnvif = this.probeOnvif.bind(this);
-
   }
 
   componentDidMount = () => {
@@ -42,18 +39,21 @@ export default class CamPicker extends React.Component {
     let parentThis = this;
     console.log("probing onvif");
 
-    onvif.Discovery.on("device", function (cam, rinfo, xml) {
-      var rtsp_cam = new Cam(
+    onvif.Discovery.on("device", function(cam, rinfo, xml) {
+      let rtsp_cam = new Cam(
         {
           hostname: cam.hostname,
           username: "admin",
           password: "tlJwpbo6",
           port: cam.port
         },
-        function (err) {
-          this.getStreamUri({ protocol: "RTSP" }, function (err, stream) {
-            var joinedDevices = parentThis.state.detectedDevices.concat({ ip: rtsp_cam.hostname, uri: stream.uri });
-            parentThis.setState({ detectedDevices: joinedDevices })
+        function(err) {
+          this.getStreamUri({ protocol: "RTSP" }, function(err, stream) {
+            const joinedDevices = parentThis.state.detectedDevices.concat({
+              ip: rtsp_cam.hostname,
+              uri: stream.uri
+            });
+            parentThis.setState({ detectedDevices: joinedDevices });
           });
         }
       );
@@ -68,12 +68,10 @@ export default class CamPicker extends React.Component {
   }
 
   render() {
-    console.log(this.state.detectedDevices)
-    const ipItems = this.state.detectedDevices.map((device) =>
-
+    console.log(this.state.detectedDevices);
+    const ipItems = this.state.detectedDevices.map(device => (
       <CamPickerItem key={device.id} ip={device.ip} rtsp_uri={device.uri} />
-    );
-
+    ));
 
     return (
       <>
@@ -83,8 +81,8 @@ export default class CamPicker extends React.Component {
             {ipItems}
           </List>
         </div>
-        <Button variant="contained"
-
+        <Button
+          variant="contained"
           component={Link}
           to={{
             pathname: routes.SESSION,
