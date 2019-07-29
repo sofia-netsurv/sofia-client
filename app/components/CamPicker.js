@@ -15,16 +15,16 @@ import IpPicker from "../components/IpPicker";
 import routes from "../constants/routes";
 import { Link } from "react-router-dom";
 
-//var onvif = require("onvif");
 import onvif from "onvif";
 import { http } from "http";
-import Cam from "onvif";
+import { Cam } from "onvif";
 
 function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
 
 function probeOnvif() {
+  let parentThis = this;
   console.log("probing onvif");
 
   onvif.Discovery.on("device", function(cam, rinfo, xml) {
@@ -37,7 +37,7 @@ function probeOnvif() {
     },
     function(err) {
       this.getStreamUri({ protocol: "RTSP" }, function(err, stream) {
-        var joinedDevices = this.state.myArray.concat({ ip: rtsp_cam.hostname, uri: stream.uri });
+        var joinedDevices = this.state.detectedDevices.concat({ ip: rtsp_cam.hostname, uri: stream.uri });
         this.setState({ detectedDevices: joinedDevices })
       });
     }
@@ -45,8 +45,6 @@ function probeOnvif() {
 });
 
   onvif.Discovery.probe();
-
-  return true;
 }
 
 export default class CamPicker extends React.Component {
@@ -60,8 +58,8 @@ export default class CamPicker extends React.Component {
   componentDidMount = () => {
     probeOnvif();
   };
-  
- 
+
+
   handleChange(ip) {
     this.setState({ip: event.target.value});
     console.log(ip);
@@ -70,7 +68,7 @@ export default class CamPicker extends React.Component {
   render() {
 
     const ipItems = this.state.detectedDevices.map((device) =>
-  
+
           <CamPickerItem key={device.id} ip={device.ip} />
   );
 
@@ -83,8 +81,8 @@ export default class CamPicker extends React.Component {
           {ipItems}
         </List>
       </div>
-       <Button variant="contained" 
-        
+       <Button variant="contained"
+
         component={Link}
         to={{
           pathname: routes.SESSION,
