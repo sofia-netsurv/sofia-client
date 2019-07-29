@@ -55,9 +55,7 @@ class Home extends Component {
           Select Camera
         </Typography>
         <CamPicker />
-        <Button variant="contained" onClick={this.handleClick}>
-          Connect
-        </Button>
+       
       </>
     );
   }

@@ -13,6 +13,7 @@ import TextField from "@material-ui/core/TextField";
 import CamPickerItem from "../components/CamPickerItem";
 import IpPicker from "../components/IpPicker";
 import routes from "../constants/routes";
+import { Link } from "react-router-dom";
 
 //var onvif = require("onvif");
 import onvif from "onvif";
@@ -25,53 +26,13 @@ function ListItemLink(props) {
 
 function probeOnvif() {
   console.log("probing onvif");
-  const PORT_TO_LISTEN = 3030;
 
   onvif.Discovery.on("device", function(cam, rinfo, xml) {
     // function will be called as soon as NVT responses
     console.log("Reply from " + rinfo.address);
     console.log(cam.hostname + ":" + cam.port + cam.path);
-    cam.username = "admin";
-    cam.password = "tlJwpbo6";
+    this.state.detectedIPs.push(cam.hostname);
 
-    const CAMERA_HOST = cam.hostname,
-      USERNAME = cam.username,
-      PASSWORD = cam.password,
-      PORT = cam.port;
-
-    const test_cam = new Cam(
-      {
-        hostname: CAMERA_HOST,
-        username: USERNAME,
-        password: PASSWORD,
-        port: PORT
-      },
-      function(err) {
-        if (err) {
-          console.log(
-            "Connection Failed for " +
-              CAMERA_HOST +
-              " Port: " +
-              PORT +
-              " Username: " +
-              USERNAME +
-              " Password: " +
-              PASSWORD
-          );
-          return;
-        }
-        console.log("CONNECTED");
-        this.absoluteMove({
-          x: 1,
-          y: 1,
-          zoom: 1
-        });
-        this.getStreamUri({ protocol: "RTSP" }, function(err, stream) {
-          console.log(stream.uri);
-        });
-        console.log(this.profiles);
-      }
-    );
   });
   onvif.Discovery.probe();
 
@@ -81,21 +42,51 @@ function probeOnvif() {
 export default class CamPicker extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { ip: "", toSession: false };
+    this.state = { ip: "", detectedIPs : ['192.168.3.1'], toSession: false };
+            this.handleChange = this.handleChange.bind(this);
+
   }
 
   componentDidMount = () => {
     probeOnvif();
   };
+  
+ 
+  handleChange(ip) {
+    this.setState({ip: event.target.value});
+    console.log(ip);
+  }
 
   render() {
+    const ipList = ['192.168.3.1', '192.168.3.10'];
+
+    const ipItems = this.state.detectedIPs.map((ip) =>
+  
+          <CamPickerItem key={ip.id} ip={ip} />
+  );
+
+
     return (
+      <>
       <div>
-        <IpPicker />
+        <IpPicker parentChange = {this.handleChange} />
         <List component="nav" aria-label="Main mailbox folders">
-          <CamPickerItem ip="192.168.1.1" />
+          {ipItems}
         </List>
       </div>
+       <Button variant="contained" 
+        
+        component={Link}
+        to={{
+          pathname: routes.SESSION,
+          state: {
+            ip: this.state.ip
+          }
+        }}
+>
+          Connect
+        </Button>
+        </>
     );
   }
 }

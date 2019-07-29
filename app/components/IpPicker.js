@@ -20,7 +20,15 @@ function ListItemLink(props) {
 export default class CamPicker extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { ip : ""};
+        this.handleChange = this.handleChange.bind(this);
+
+  }
+
+  handleChange(event) {
+    this.setState({ip: event.target.value});
+    console.log(this.state.ip)
+    this.props.parentChange(this.state.ip);
   }
 
   render() {
