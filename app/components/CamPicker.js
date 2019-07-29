@@ -28,9 +28,9 @@ function ListItemLink(props) {
 export default class CamPicker extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { ip: "", detectedDevices : [], toSession: false };
-            this.handleChange = this.handleChange.bind(this);
-            this.probeOnvif = this.probeOnvif.bind(this);
+    this.state = { ip: "", detectedDevices: [], toSession: false };
+    this.handleChange = this.handleChange.bind(this);
+    this.probeOnvif = this.probeOnvif.bind(this);
 
   }
 
@@ -38,32 +38,32 @@ export default class CamPicker extends React.Component {
     this.probeOnvif();
   };
 
-   probeOnvif() {
+  probeOnvif() {
     let parentThis = this;
     console.log("probing onvif");
 
-    onvif.Discovery.on("device", function(cam, rinfo, xml) {
-    var rtsp_cam = new Cam(
-      {
-        hostname: cam.hostname,
-        username: "admin",
-        password: "tlJwpbo6",
-        port: cam.port
-      },
-      function(err) {
-        this.getStreamUri({ protocol: "RTSP" }, function(err, stream) {
-          var joinedDevices = parentThis.state.detectedDevices.concat({ ip: rtsp_cam.hostname, uri: stream.uri });
-          parentThis.setState({ detectedDevices: joinedDevices })
-        });
-      }
-    );
-  });
+    onvif.Discovery.on("device", function (cam, rinfo, xml) {
+      var rtsp_cam = new Cam(
+        {
+          hostname: cam.hostname,
+          username: "admin",
+          password: "tlJwpbo6",
+          port: cam.port
+        },
+        function (err) {
+          this.getStreamUri({ protocol: "RTSP" }, function (err, stream) {
+            var joinedDevices = parentThis.state.detectedDevices.concat({ ip: rtsp_cam.hostname, uri: stream.uri });
+            parentThis.setState({ detectedDevices: joinedDevices })
+          });
+        }
+      );
+    });
 
     onvif.Discovery.probe();
   }
 
   handleChange(ip) {
-    this.setState({ip: event.target.value});
+    this.setState({ ip: event.target.value });
     console.log(ip);
   }
 
@@ -71,31 +71,31 @@ export default class CamPicker extends React.Component {
     console.log(this.state.detectedDevices)
     const ipItems = this.state.detectedDevices.map((device) =>
 
-          <CamPickerItem key={device.id} ip={device.ip} rtsp_uri={device.uri}/>
-  );
+      <CamPickerItem key={device.id} ip={device.ip} rtsp_uri={device.uri} />
+    );
 
 
     return (
       <>
-      <div>
-        <IpPicker parentChange = {this.handleChange} />
-        <List component="nav" aria-label="Main mailbox folders">
-          {ipItems}
-        </List>
-      </div>
-       <Button variant="contained"
+        <div>
+          <IpPicker parentChange={this.handleChange} />
+          <List component="nav" aria-label="Main mailbox folders">
+            {ipItems}
+          </List>
+        </div>
+        <Button variant="contained"
 
-        component={Link}
-        to={{
-          pathname: routes.SESSION,
-          state: {
-            ip: this.state.ip
-          }
-        }}
->
+          component={Link}
+          to={{
+            pathname: routes.SESSION,
+            state: {
+              ip: this.state.ip
+            }
+          }}
+        >
           Connect
         </Button>
-        </>
+      </>
     );
   }
 }
