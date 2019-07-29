@@ -31,7 +31,9 @@ export default class CamPicker extends React.Component {
         to={{
           pathname: routes.SESSION,
           state: {
-            ip: this.props.ip
+            ip: this.props.ip,
+            rtsp_uri: this.props.rtsp_uri,
+
           }
         }}
       >

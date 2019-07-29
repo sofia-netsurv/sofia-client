@@ -11,6 +11,7 @@ import routes from "../constants/routes";
 export default class Session extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props.location.state)
   }
 
   startStream = (ip, wsPort) => {};
@@ -37,6 +38,7 @@ export default class Session extends React.Component {
     return (
       <>
         <h1>{this.props.location.state.ip}</h1>
+          <p>{this.props.location.state.rtsp_uri}</p>
         <Button>Camera Config</Button>
         <Button>View Stream</Button>
         <Button component={Link} to={routes.HOME}>

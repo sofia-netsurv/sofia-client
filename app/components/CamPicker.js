@@ -68,10 +68,10 @@ export default class CamPicker extends React.Component {
   }
 
   render() {
-
+    console.log(this.state.detectedDevices)
     const ipItems = this.state.detectedDevices.map((device) =>
 
-          <CamPickerItem key={device.id} ip={device.ip} />
+          <CamPickerItem key={device.id} ip={device.ip} rtsp_uri={device.uri}/>
   );
 
 
