@@ -23,42 +23,44 @@ function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
 
-function probeOnvif() {
-  let parentThis = this;
-  console.log("probing onvif");
 
-  onvif.Discovery.on("device", function(cam, rinfo, xml) {
-  var rtsp_cam = new Cam(
-    {
-      hostname: cam.hostname,
-      username: "admin",
-      password: "tlJwpbo6",
-      port: cam.port
-    },
-    function(err) {
-      this.getStreamUri({ protocol: "RTSP" }, function(err, stream) {
-        var joinedDevices = this.state.detectedDevices.concat({ ip: rtsp_cam.hostname, uri: stream.uri });
-        this.setState({ detectedDevices: joinedDevices })
-      });
-    }
-  );
-});
-
-  onvif.Discovery.probe();
-}
 
 export default class CamPicker extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ip: "", detectedDevices : [], toSession: false };
             this.handleChange = this.handleChange.bind(this);
+            this.probeOnvif = this.probeOnvif.bind(this);
 
   }
 
   componentDidMount = () => {
-    probeOnvif();
+    this.probeOnvif();
   };
 
+   probeOnvif() {
+    let parentThis = this;
+    console.log("probing onvif");
+
+    onvif.Discovery.on("device", function(cam, rinfo, xml) {
+    var rtsp_cam = new Cam(
+      {
+        hostname: cam.hostname,
+        username: "admin",
+        password: "tlJwpbo6",
+        port: cam.port
+      },
+      function(err) {
+        this.getStreamUri({ protocol: "RTSP" }, function(err, stream) {
+          var joinedDevices = parentThis.state.detectedDevices.concat({ ip: rtsp_cam.hostname, uri: stream.uri });
+          parentThis.setState({ detectedDevices: joinedDevices })
+        });
+      }
+    );
+  });
+
+    onvif.Discovery.probe();
+  }
 
   handleChange(ip) {
     this.setState({ip: event.target.value});
