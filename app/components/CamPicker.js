@@ -28,12 +28,22 @@ function probeOnvif() {
   console.log("probing onvif");
 
   onvif.Discovery.on("device", function(cam, rinfo, xml) {
-    // function will be called as soon as NVT responses
-    console.log("Reply from " + rinfo.address);
-    console.log(cam.hostname + ":" + cam.port + cam.path);
-    this.state.detectedIPs.push(cam.hostname);
+  var rtsp_cam = new Cam(
+    {
+      hostname: cam.hostname,
+      username: "admin",
+      password: "tlJwpbo6",
+      port: cam.port
+    },
+    function(err) {
+      this.getStreamUri({ protocol: "RTSP" }, function(err, stream) {
+        var joinedDevices = this.state.myArray.concat({ ip: rtsp_cam.hostname, uri: stream.uri });
+        this.setState({ detectedDevices: joinedDevices })
+      });
+    }
+  );
+});
 
-  });
   onvif.Discovery.probe();
 
   return true;
@@ -42,7 +52,7 @@ function probeOnvif() {
 export default class CamPicker extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { ip: "", detectedIPs : ['192.168.3.1'], toSession: false };
+    this.state = { ip: "", detectedDevices : [], toSession: false };
             this.handleChange = this.handleChange.bind(this);
 
   }
@@ -58,11 +68,10 @@ export default class CamPicker extends React.Component {
   }
 
   render() {
-    const ipList = ['192.168.3.1', '192.168.3.10'];
 
-    const ipItems = this.state.detectedIPs.map((ip) =>
+    const ipItems = this.state.detectedDevices.map((device) =>
   
-          <CamPickerItem key={ip.id} ip={ip} />
+          <CamPickerItem key={device.id} ip={device.ip} />
   );
 
 

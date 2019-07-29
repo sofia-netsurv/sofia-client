@@ -10,7 +10,6 @@ import routes from "../constants/routes";
 
 export default class Session extends React.Component {
   constructor(props) {
-    console.log(props);
     super(props);
   }
 

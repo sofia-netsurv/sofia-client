@@ -27,7 +27,6 @@ export default class CamPicker extends React.Component {
 
   handleChange(event) {
     this.setState({ip: event.target.value});
-    console.log(this.state.ip)
     this.props.parentChange(this.state.ip);
   }
 
