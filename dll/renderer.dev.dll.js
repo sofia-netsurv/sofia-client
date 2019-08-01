@@ -267,6 +267,18 @@ eval("module.exports = jsmpeg;\n\n//# sourceURL=webpack://renderer/external_%22j
 
 /***/ }),
 
+/***/ "nimble":
+/*!*************************!*\
+  !*** external "nimble" ***!
+  \*************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = nimble;\n\n//# sourceURL=webpack://renderer/external_%22nimble%22?");
+
+/***/ }),
+
 /***/ "node-rtsp-stream":
 /*!***********************************!*\
   !*** external "node-rtsp-stream" ***!

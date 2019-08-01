@@ -1,5 +1,5 @@
-// flow-typed signature: 66df4cff499954f9bea8665541b6e71d
-// flow-typed version: aa652b5114/@material-ui/icons_v4.x.x/flow_>=v0.69.x
+// flow-typed signature: da8e44dbc4004144d5a185b9899be18a
+// flow-typed version: c6154227d1/@material-ui/icons_v4.x.x/flow_>=v0.69.x <=v0.103.x
 
 /*
  * Created and maintained: https://github.com/retyui

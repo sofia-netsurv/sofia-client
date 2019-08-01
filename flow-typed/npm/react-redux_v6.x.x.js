@@ -1,5 +1,5 @@
-// flow-typed signature: 23e7357ced1f8f236597fc280c42aef8
-// flow-typed version: 72d88e1dff/react-redux_v6.x.x/flow_>=v0.89.x
+// flow-typed signature: a3bf3a0265d2c1448e04855dac255b90
+// flow-typed version: c6154227d1/react-redux_v6.x.x/flow_>=v0.89.x <=v0.103.x
 
 /**
 The order of type arguments for connect() is as follows:

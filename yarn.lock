@@ -11003,6 +11003,11 @@ nice-try@^1.0.4:
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==
 
+nimble@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/nimble/-/nimble-0.0.2.tgz#8225c67f6b6c53ae06e35aa577f9a3ef05db09dc"
+  integrity sha1-giXGf2tsU64G41qld/mj7wXbCdw=
+
 nise@^1.4.10:
   version "1.4.10"
   resolved "https://registry.yarnpkg.com/nise/-/nise-1.4.10.tgz#ae46a09a26436fae91a38a60919356ae6db143b6"

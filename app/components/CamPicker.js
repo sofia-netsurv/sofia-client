@@ -15,9 +15,11 @@ import IpPicker from "../components/IpPicker";
 import routes from "../constants/routes";
 import { Link } from "react-router-dom";
 
-import onvif from "onvif";
-import { http } from "http";
-import { Cam } from "onvif";
+//import onvif from "onvif";
+//import { http } from "http";
+//import { Cam } from "onvif";
+
+import probe from "../utils/probe";
 
 function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
@@ -38,28 +40,8 @@ export default class CamPicker extends React.Component {
   probeOnvif() {
     let parentThis = this;
     console.log("probing onvif");
+    probe(parentThis);
 
-    onvif.Discovery.on("device", function(cam, rinfo, xml) {
-      let rtsp_cam = new Cam(
-        {
-          hostname: cam.hostname,
-          username: "admin",
-          password: "tlJwpbo6",
-          port: cam.port
-        },
-        function(err) {
-          this.getStreamUri({ protocol: "RTSP" }, function(err, stream) {
-            const joinedDevices = parentThis.state.detectedDevices.concat({
-              ip: rtsp_cam.hostname,
-              uri: stream.uri
-            });
-            parentThis.setState({ detectedDevices: joinedDevices });
-          });
-        }
-      );
-    });
-
-    onvif.Discovery.probe();
   }
 
   handleChange(ip) {

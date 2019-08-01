@@ -1,5 +1,5 @@
-// flow-typed signature: 9987f80c12a2cad7dfa2b08cc14d2edc
-// flow-typed version: 2973a15489/react-router-dom_v5.x.x/flow_>=v0.98.x
+// flow-typed signature: 09f8b94a384e14913140acccab396423
+// flow-typed version: c6154227d1/react-router-dom_v5.x.x/flow_>=v0.98.x <=v0.103.x
 
 declare module "react-router-dom" {
   declare export var BrowserRouter: React$ComponentType<{|
