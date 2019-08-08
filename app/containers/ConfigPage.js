@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from "react";
-import Session from "../components/Session";
+import Config from "../components/Session";
 import { makeStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
@@ -17,6 +17,6 @@ export default class ConfigPage extends React.Component {
   props: Props;
 
   render() {
-    return <Session />;
+    return <Config />;
   }
 }

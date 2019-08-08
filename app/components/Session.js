@@ -86,8 +86,9 @@ export default class Session extends React.Component {
           to={{
             pathname: routes.CONFIG,
             state: {
-              ip: this.props.ip,
-              rtsp_uri: this.props.rtsp_uri
+              ip: this.props.location.state.ip,
+              rtsp_uri: this.props.location.state.rtsp_uri,
+              device_info: this.props.location.state.device_info
             }
           }}
         >

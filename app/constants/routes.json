@@ -1,4 +1,5 @@
 {
   "HOME": "/",
-  "SESSION": "/session"
+  "SESSION": "/session",
+  "CONFIG": "/config"
 }
