@@ -9,6 +9,7 @@ import Box from '@material-ui/core/Box';
 import TvIcon from "@material-ui/icons/Tv";
 import SettingsIcon from "@material-ui/icons/Settings";
 import SettingsEthernetIcon from "@material-ui/icons/SettingsEthernet";
+import PolymerIcon from "@material-ui/icons/Polymer";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -66,7 +67,8 @@ export default function ConfigTabs() {
 aria-label="simple tabs example">
           <Tab icon={<SettingsIcon />} label="General" {...a11yProps(0)} />
           <Tab icon={<TvIcon />} label="Camera " {...a11yProps(1)} />
-          <Tab icon={<SettingsEthernetIcon />} label="Network" {...a11yProps(2)} />
+          <Tab icon={<PolymerIcon />} label="Encoding" {...a11yProps(2)} />
+          <Tab icon={<SettingsEthernetIcon />} label="Network " {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -77,6 +79,9 @@ aria-label="simple tabs example">
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        Item F
       </TabPanel>
     </div>
   );
