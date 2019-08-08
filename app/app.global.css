@@ -34,3 +34,7 @@ a:hover {
   text-decoration: none;
   cursor: pointer;
 }
+.MuiAppBar-colorPrimary {
+  background-color:#fafafa!important;
+  color:black!important;
+}

@@ -13,9 +13,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import VideocamIcon from "@material-ui/icons/VideocamOutlined";
-import TvIcon from "@material-ui/icons/Tv";
-import BuildIcon from "@material-ui/icons/Build";
-
+import ConfigTabs from "../components/ConfigTabs";
 
 export default class Config extends React.Component {
   constructor(props) {
@@ -29,8 +27,7 @@ export default class Config extends React.Component {
     return (
       <>
         <h2><VideocamIcon/>{this.props.location.state.ip}</h2>
-        
-
+        <ConfigTabs/>
         <Button component={Link} 
             to={{
             pathname: routes.SESSION,
