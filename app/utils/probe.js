@@ -189,42 +189,51 @@ function fromLong(ipl) {
 }
 
 const probeWs = (parentThis, username, password) => {
-    onvif.Discovery.on("device", function(cam, rinfo, xml) {
-      let rtsp_cam = new Cam(
+onvif.Discovery.on("device", function (cam, rinfo, xml) {
+    let rtsp_cam = new Cam(
         {
-          hostname: cam.hostname,
-          username: username,
-          password: password,
-          port: cam.port
+            hostname: cam.hostname,
+            username: username,
+            password: password,
+            port: cam.port
         },
-        function(err) {
-          this.getStreamUri({ protocol: "RTSP" }, function(err, stream) {
-            let camFound = parentThis.state.detectedDevices.find(function(element) {
-                return element.ip == rtsp_cam.hostname;
-            });
-            if (!camFound) {
-                const joinedDevices = parentThis.state.detectedDevices.concat({
-                ip: rtsp_cam.hostname,
-                uri: stream.uri,
-                device_info : {}
-                });
-                parentThis.setState({ detectedDevices: joinedDevices });
-            }
-          });
-        }
-      );
-    });
+        function (err) {
+            let camThis = this;
+            this.getStreamUri({ protocol: "RTSP" }, function (err, stream) {
+                let got_info;
+                camThis.getDeviceInformation(function (err, info, xml) {
+                    if (!err) got_info = info;
 
-    onvif.Discovery.probe();
+
+                    let camFound = parentThis.state.detectedDevices.find(function (element) {
+                        return element.ip == rtsp_cam.hostname;
+                    });
+                    if (!camFound) {
+                        const joinedDevices = parentThis.state.detectedDevices.concat({
+                            ip: rtsp_cam.hostname,
+                            uri: stream.uri,
+                            device_info: got_info
+                        });
+                        parentThis.setState({ detectedDevices: joinedDevices });
+                    }
+                });
+
+
+            });
+        }
+    );
+});
+
+onvif.Discovery.probe();
 
 }
 
 const probe = (parentThis) => {
     console.log("Probing ONVIF using ws-discovery");
     probeWs(parentThis, 'admin', 'tlJwpbo6');
-    
+
     console.log("Probing ONVIF using IP range");
-    const options = {IP_RANGE_START : '192.168.2.1', IP_RANGE_END : '192.168.2.254', PORT_LIST : [80, 7575, 8000, 8080, 8081, 8899], USERNAME : 'admin', PASSWORD : 'tlJwpbo6'};
+    const options = { IP_RANGE_START: '192.168.1.1', IP_RANGE_END: '192.168.1.254', PORT_LIST: [80, 7575, 8000, 8080, 8081, 8899], USERNAME: 'admin', PASSWORD: 'tlJwpbo6' };
     probeRange(parentThis, options);
 
 }
