@@ -7,11 +7,18 @@ import Stream from "node-rtsp-stream";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import routes from "../constants/routes";
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+
 
 export default class Session extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.location.state)
+    console.log(this.props.location.state);
+    console.log(this.props.location.state);
   }
 
   startStream = (ip, wsPort) => {};
@@ -35,12 +42,60 @@ export default class Session extends React.Component {
   };
 
   render() {
+    const info = this.props.location.state.device_info;
     return (
       <>
         <h1>{this.props.location.state.ip}</h1>
-          <p>{this.props.location.state.rtsp_uri}</p>
-        <Button>Camera Config</Button>
-        <Button>View Stream</Button>
+          
+          <h3>Device Info</h3>
+          <TableBody>
+            <TableRow>
+              <TableCell align="right">manufacturer</TableCell>
+              <TableCell align="right">{info.manufacturer}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell align="right">model</TableCell>
+              <TableCell align="right">{info.model}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell align="right">firmwareVersion</TableCell>
+              <TableCell align="right">{info.firmwareVersion}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell align="right">serialNumber</TableCell>
+              <TableCell align="right">{info.serialNumber}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell align="right">hardwareId</TableCell>
+              <TableCell align="right">{info.hardwareId}</TableCell>
+            </TableRow>
+        </TableBody>
+
+          <h3>Stream Info</h3>
+        <TableBody>
+            <TableRow>
+              <TableCell align="right">{this.props.location.state.rtsp_uri}</TableCell>
+            </TableRow>
+        </TableBody>
+
+        <Button
+          component={Link}
+          to={{
+            pathname: routes.CONFIG,
+            state: {
+              ip: this.props.ip,
+              rtsp_uri: this.props.rtsp_uri
+            }
+          }}
+        >
+          Camera Config
+        </Button>
+        <Button 
+        component='a'
+          href={this.props.location.state.rtsp_uri}
+          target="_blank" 
+            
+        >View Stream</Button>
         <Button component={Link} to={routes.HOME}>
           Back
         </Button>

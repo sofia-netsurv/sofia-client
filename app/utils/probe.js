@@ -138,7 +138,8 @@ timeout : 5000
                     if (!camFound) {
                         const joinedDevices = parentThis.state.detectedDevices.concat({
                             ip: ip_entry,
-                            uri: got_live_stream_tcp.uri
+                            uri: got_live_stream_tcp.uri,
+                            device_info : got_info
                         });
                         parentThis.setState({ detectedDevices: joinedDevices });
                     }
@@ -204,7 +205,8 @@ const probeWs = (parentThis, username, password) => {
             if (!camFound) {
                 const joinedDevices = parentThis.state.detectedDevices.concat({
                 ip: rtsp_cam.hostname,
-                uri: stream.uri
+                uri: stream.uri,
+                device_info : {}
                 });
                 parentThis.setState({ detectedDevices: joinedDevices });
             }
@@ -222,7 +224,7 @@ const probe = (parentThis) => {
     probeWs(parentThis, 'admin', 'tlJwpbo6');
     
     console.log("Probing ONVIF using IP range");
-    const options = {IP_RANGE_START : '192.168.1.1', IP_RANGE_END : '192.168.1.254', PORT_LIST : [80, 7575, 8000, 8080, 8081, 8899], USERNAME : 'admin', PASSWORD : 'tlJwpbo6'};
+    const options = {IP_RANGE_START : '192.168.2.1', IP_RANGE_END : '192.168.2.254', PORT_LIST : [80, 7575, 8000, 8080, 8081, 8899], USERNAME : 'admin', PASSWORD : 'tlJwpbo6'};
     probeRange(parentThis, options);
 
 }

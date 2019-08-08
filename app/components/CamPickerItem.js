@@ -33,6 +33,7 @@ export default class CamPicker extends React.Component {
           state: {
             ip: this.props.ip,
             rtsp_uri: this.props.rtsp_uri,
+            device_info : this.props.device_info
 
           }
         }}
