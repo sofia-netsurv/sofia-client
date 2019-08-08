@@ -1,5 +1,5 @@
-// flow-typed signature: 72beadf6a75c51cedf2ba4481d7535e6
-// flow-typed version: c6154227d1/jest_v24.x.x/flow_>=v0.39.x <=v0.103.x
+// flow-typed signature: ec5f209a3b2ff526e13bf59605e51e87
+// flow-typed version: 6cb9e99836/jest_v24.x.x/flow_>=v0.39.x <=v0.103.x
 
 type JestMockFn<TArguments: $ReadOnlyArray<*>, TReturn> = {
   (...args: TArguments): TReturn,
@@ -938,10 +938,10 @@ type JestSpyType = {
   calls: JestCallsType,
 };
 
-type JestDoneFn = {
+type JestDoneFn = {|
   (): void,
   fail: (error: Error) => void,
-};
+|};
 
 /** Runs this function after every test inside this context */
 declare function afterEach(
@@ -1017,19 +1017,20 @@ declare var it: {
    * @param {Function} Test
    * @param {number} Timeout for the test, in milliseconds.
    */
-  only(
-    name: JestTestName,
-    fn?: (done: JestDoneFn) => ?Promise<mixed>,
-    timeout?: number
-  ): {
+  only: {|
+    (
+      name: JestTestName,
+      fn?: (done: JestDoneFn) => ?Promise<mixed>,
+      timeout?: number
+    ): void,
     each(
       ...table: Array<Array<mixed> | mixed> | [Array<string>, string]
     ): (
       name: JestTestName,
       fn?: (...args: Array<any>) => ?Promise<mixed>,
       timeout?: number
-    ) => void,
-  },
+    ) => void
+  |},
 
   /**
    * Skip running this test

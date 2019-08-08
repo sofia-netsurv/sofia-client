@@ -262,6 +262,7 @@
     "devtron": "^1.4.0",
     "electron-debug": "^2.1.0",
     "electron-log": "^3.0.4",
+    "electron-packager": "^14.0.4",
     "electron-updater": "^4.0.6",
     "eslint-plugin-react-native": "^3.7.0",
     "flow": "^0.2.3",
