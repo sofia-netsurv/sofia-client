@@ -12,6 +12,9 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import VideocamIcon from "@material-ui/icons/VideocamOutlined";
+import TvIcon from "@material-ui/icons/Tv";
+import BuildIcon from "@material-ui/icons/Build";
 
 
 export default class Session extends React.Component {
@@ -45,9 +48,9 @@ export default class Session extends React.Component {
     const info = this.props.location.state.device_info;
     return (
       <>
-        <h1>{this.props.location.state.ip}</h1>
+        <h2><VideocamIcon/>{this.props.location.state.ip}</h2>
           
-          <h3>Device Info</h3>
+          <h3><BuildIcon/>Device Info</h3>
           <TableBody>
             <TableRow>
               <TableCell align="right">manufacturer</TableCell>
@@ -71,7 +74,7 @@ export default class Session extends React.Component {
             </TableRow>
         </TableBody>
 
-          <h3>Stream Info</h3>
+          <h3><TvIcon/>Stream Info</h3>
         <TableBody>
             <TableRow>
               <TableCell align="right">{this.props.location.state.rtsp_uri}</TableCell>
