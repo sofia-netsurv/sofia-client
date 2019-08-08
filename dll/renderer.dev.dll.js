@@ -195,6 +195,18 @@ eval("module.exports = electron-log;\n\n//# sourceURL=webpack://renderer/externa
 
 /***/ }),
 
+/***/ "electron-packager":
+/*!************************************!*\
+  !*** external "electron-packager" ***!
+  \************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = electron-packager;\n\n//# sourceURL=webpack://renderer/external_%22electron-packager%22?");
+
+/***/ }),
+
 /***/ "electron-updater":
 /*!***********************************!*\
   !*** external "electron-updater" ***!

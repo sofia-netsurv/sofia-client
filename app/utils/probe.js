@@ -170,7 +170,7 @@ function generate_range(start_ip, end_ip) {
   return range_array;
 }
 
-//toLong taken from NPM package 'ip' 
+//toLong taken from NPM package 'ip'
 function toLong(ip) {
   var ipl = 0;
   ip.split('.').forEach(function(octet) {
@@ -180,7 +180,7 @@ function toLong(ip) {
   return(ipl >>> 0);
 }
 
-//fromLong taken from NPM package 'ip' 
+//fromLong taken from NPM package 'ip'
 function fromLong(ipl) {
   return ((ipl >>> 24) + '.' +
       (ipl >> 16 & 255) + '.' +

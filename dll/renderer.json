@@ -27,6 +27,10 @@
       "id": "electron-log",
       "buildMeta": { "providedExports": true }
     },
+    "electron-packager": {
+      "id": "electron-packager",
+      "buildMeta": { "providedExports": true }
+    },
     "electron-updater": {
       "id": "electron-updater",
       "buildMeta": { "providedExports": true }
