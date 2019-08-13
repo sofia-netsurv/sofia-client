@@ -70,7 +70,8 @@ export default function ConfigTabs() {
 
   return (
     <div>
-        <ConfigPicker configType="dropdown" configLabel="Day/Night mode" configOptions = {'Star IR', 'Full Color', 'Black and White'}/> 
+        <ConfigPicker configType="dropdown" configLabel="Day/Night mode" configValue = "star_ir" configOptions = {[{ 'label' : 'Star IR', 'value' : 'star_ir'}, { 'label' : 'Full Color', 'value' : 'full_color'},{ 'label' : 'Black & White', 'value' : 'black_and_white'}]}/> 
+
     </div>
   );
 }

@@ -15,11 +15,14 @@ import TableRow from "@material-ui/core/TableRow";
 import VideocamIcon from "@material-ui/icons/VideocamOutlined";
 import ConfigTabs from "../components/ConfigTabs";
 
-export default class Config extends React.Component {
+export default class ViewStream extends React.Component {
   constructor(props) {
     super(props);
     console.log(this.props.location.state);
     console.log(this.props.location.state);
+  }
+  componentDidMount() {
+    console.log("starting RTSP transcoder");
   }
 
   render() {
@@ -29,7 +32,6 @@ export default class Config extends React.Component {
           <VideocamIcon />
           {this.props.location.state.ip}
         </h2>
-        <ConfigTabs />
         <Button
           component={Link}
           to={{
