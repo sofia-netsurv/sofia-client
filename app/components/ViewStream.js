@@ -14,6 +14,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import VideocamIcon from "@material-ui/icons/VideocamOutlined";
 import ConfigTabs from "../components/ConfigTabs";
+import JSMpeg from "jsmpeg-player";
 
 export default class ViewStream extends React.Component {
   constructor(props) {
@@ -23,6 +24,25 @@ export default class ViewStream extends React.Component {
   }
   componentDidMount() {
     console.log("starting RTSP transcoder");
+    this.stream = new Stream({
+      name: "name",
+      streamUrl:
+        "rtsp://192.168.2.156:554/user=admin_password=tlJwpbo6_channel=1_stream=0.sdp?real_stream",
+      wsPort: 9999,
+      ffmpegOptions: {
+        // options ffmpeg flags
+        "-stats": "", // an option with no neccessary value uses a blank string
+        "-r": 30 // options with required values specify the value after the key
+      }
+    });
+    console.log(document.getElementById("videoWrapper"));
+    new JSMpeg.VideoElement(
+      document.getElementById("videoWrapper"),
+      "ws://localhost:9999"
+    );
+  }
+  componentWillUnmount() {
+    this.stream.stop();
   }
 
   render() {
@@ -32,6 +52,11 @@ export default class ViewStream extends React.Component {
           <VideocamIcon />
           {this.props.location.state.ip}
         </h2>
+
+        <div
+          id="videoWrapper"
+          style={{ height: 480, width: 640, position: "relative" }}
+        />
         <Button
           component={Link}
           to={{

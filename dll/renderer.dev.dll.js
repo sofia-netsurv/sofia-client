@@ -279,6 +279,18 @@ eval("module.exports = jsmpeg;\n\n//# sourceURL=webpack://renderer/external_%22j
 
 /***/ }),
 
+/***/ "jsmpeg-player":
+/*!********************************!*\
+  !*** external "jsmpeg-player" ***!
+  \********************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = jsmpeg-player;\n\n//# sourceURL=webpack://renderer/external_%22jsmpeg-player%22?");
+
+/***/ }),
+
 /***/ "nimble":
 /*!*************************!*\
   !*** external "nimble" ***!
