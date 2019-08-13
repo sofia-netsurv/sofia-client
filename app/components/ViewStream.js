@@ -27,7 +27,7 @@ export default class ViewStream extends React.Component {
     this.stream = new Stream({
       name: "name",
       streamUrl:
-        "rtsp://192.168.2.156:554/user=admin_password=tlJwpbo6_channel=1_stream=0.sdp?real_stream",
+      this.props.location.state.rtsp_uri,
       wsPort: 9999,
       ffmpegOptions: {
         // options ffmpeg flags
