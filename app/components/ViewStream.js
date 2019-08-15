@@ -29,9 +29,8 @@ export default class ViewStream extends React.Component {
       streamUrl: this.props.location.state.rtsp_uri,
       wsPort: 9999,
       ffmpegOptions: {
-        // options ffmpeg flags
-        "-stats": "", // an option with no neccessary value uses a blank string
-        "-r": 30 // options with required values specify the value after the key
+        "-stats": "",
+        "-r": 30
       }
     });
     console.log(document.getElementById("videoWrapper"));

@@ -26,10 +26,14 @@ if cam.connect():
 			elif command == "camera get":
 				print(json.dumps({"command" : "camera get", "success" : True, "response" : cam.get_info("Camera") }));
 			elif command == "camera set":
-				print("whas up")
-				payload_str = input()
+				config = cam.get_info("Camera")
+				option = input()
+				if option == 'day_night':
+					value = input()
+					new_config = config['Camera']['Param'][0]['DayNightColor'] = value
+					
 				
-				print(json.dumps({"command" : "camera set", "success" : True, "response" : cam.set_info("Camera", payload_str) }));
+				print(json.dumps({"command" : "camera set", "success" : True, "response" : cam.set_info('Camera', new_config) }));
 
 
 
