@@ -18,6 +18,10 @@ To install the dependencies:
 
     yarn
     
+ffmpeg is required for viewing the stream, to install on Debian based distros
+
+    sudo apt install ffmpeg
+    
 To run the program
 
     yarn start
