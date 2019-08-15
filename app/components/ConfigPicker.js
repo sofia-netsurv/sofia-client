@@ -7,7 +7,6 @@ import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import { PythonShell } from "python-shell";
 import { exec } from "child_process";
-let pyshell = new PythonShell("connect.py");
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -20,21 +19,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-pyshell.on("message", function(message) {
-  console.log("message from netsurv");
-  console.log(message);
-});
-pyshell.on("close", function(message) {
-  console.log("stream close");
-  console.log(message);
-  pyshell = new PythonShell("connect.py");
-});
-pyshell.on("error", function(message) {
-  console.log("stream error");
-  console.log(message);
-  pyshell = new PythonShell("connect.py");
-});
-
 export default function ConfigPicker(props) {
   //getInfo();
   const classes = useStyles();
@@ -45,9 +29,12 @@ export default function ConfigPicker(props) {
 
   function handleChange(event) {
     getInfo();
-    setInfo();
-
-    setMode(event.target.value);
+    let result = setInfo(event.target.value);
+    console.log(result);
+    if (result) {
+      console.log("got here");
+      setMode(event.target.value);
+    }
   }
 
   function handleClose() {
@@ -59,37 +46,48 @@ export default function ConfigPicker(props) {
   }
 
   function getInfo() {
-    console.log("get info");
-    try {
-      pyshell.once("message", function(message) {
-        let messageJson = JSON.parse(message);
-        console.log(messageJson);
-        console.log(messageJson.response.Camera.Param[0].DayNightColor);
-        setConfig(messageJson.response);
-        console.log(config);
-        let dayNight = messageJson.response.Camera.Param[0].DayNightColor;
-
-        if (dayNight == "0x00000000" || dayNight == "0x0") {
-          setMode("star_ir");
-        } else if (dayNight == "0x00000001" || dayNight == "0x1") {
-          setMode("full_color");
-        } else if (dayNight == "0x00000002" || dayNight == "0x2") {
-          setMode("black_and_white");
-        }
-      });
-    } catch (e) {
-      console.log("stream error");
-      pyshell = new PythonShell("connect.py");
-    }
-    let response = pyshell.send("camera get");
-  }
-  function setInfo() {
     console.log(mode);
-
-    pyshell.send("camera set");
-    pyshell.send("day_night");
-
-    pyshell.send(mode);
+    exec(
+      "python3 connect.py 192.168.1.156 get Camera",
+      (err, stdout, stderr) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        console.log(stdout);
+      }
+    );
+    /* if (dayNight == "0x00000000" || dayNight == "0x0") {
+      setMode("star_ir");
+    } else if (dayNight == "0x00000001" || dayNight == "0x1") {
+      setMode("full_color");
+    } else if (dayNight == "0x00000002" || dayNight == "0x2") {
+      setMode("black_and_white");
+    } */
+  }
+  function setInfo(setMode) {
+    let returnVal = false;
+    console.log(mode);
+    let val;
+    if (setMode == "star_ir") {
+      val = "0x0";
+    } else if (setMode == "full_color") {
+      val = "0x1";
+    } else {
+      val = "0x2";
+    }
+    exec(
+      "python3 connect.py 192.168.1.156 set Camera DayNightColor " + val,
+      (err, stdout, stderr) => {
+        if (err) {
+          console.error(err);
+        }
+        const response = JSON.parse(stdout);
+        return true;
+        returnVal = response["success"];
+      }
+    );
+    return returnVal;
   }
   return (
     <form autoComplete="off">

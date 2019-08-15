@@ -5,7 +5,6 @@ import json
 
 #python3 connect.py 192.168.1.156 status
 
-print(len(sys.argv))
 if len(sys.argv) > 2:
 	host_ip = sys.argv[1]
 	command = sys.argv[2]
@@ -21,8 +20,6 @@ if len(sys.argv) > 2:
 	cam = DVRIPCam(host_ip)
 	if cam.connect():
 		if cam.login():
-			print(json.dumps({"command" : "connect", "success" : True }))
-
 
 			if command == "status":
 				print(json.dumps({"command" : "status", "success" : True, "response" : "connected" }))
@@ -31,14 +28,17 @@ if len(sys.argv) > 2:
 			elif command == "set":
 				config = cam.get_info(profile)
 
-				if setting == 'DayNightColor':
-					config['Camera']['Param'][0]['DayNightColor'] = value
-				elif setting == 'PictureFlip':
+				if setting == 'PictureFlip':
 					config['Camera']['Param'][0]['PictureFlip'] = value
+				elif setting == 'DayNightColor':
+					config['Camera']['Param'][0]['DayNightColor'] = value
 					response = cam.set_info(profile, config)
 					new_config = cam.get_info(profile)
-					if new_config['Camera']['Param'][0]['PictureFlip'] == config['Camera']['Param'][0]['PictureFlip']:
+					if new_config['Camera']['Param'][0]['DayNightColor'] == config['Camera']['Param'][0]['DayNightColor']:
 						print(json.dumps({"command" : "camera set", "success" : True, "response" : response, "value" : value }))
+					else:
+						print(json.dumps({"command" : "camera set", "success" : False, "message" : "value not set"}))
+
 
 				else:
 					print(json.dumps({"command" : "camera set", "success" : False, "message" : "unknown seting"}))
