@@ -26,8 +26,7 @@ export default class ViewStream extends React.Component {
     console.log("starting RTSP transcoder");
     this.stream = new Stream({
       name: "name",
-      streamUrl:
-      this.props.location.state.rtsp_uri,
+      streamUrl: this.props.location.state.rtsp_uri,
       wsPort: 9999,
       ffmpegOptions: {
         // options ffmpeg flags
@@ -36,13 +35,14 @@ export default class ViewStream extends React.Component {
       }
     });
     console.log(document.getElementById("videoWrapper"));
-    new JSMpeg.VideoElement(
+    this.player = new JSMpeg.VideoElement(
       document.getElementById("videoWrapper"),
       "ws://localhost:9999"
     );
   }
   componentWillUnmount() {
     this.stream.stop();
+    this.player.destroy();
   }
 
   render() {
