@@ -6,7 +6,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import { PythonShell } from "python-shell";
-
+import { exec } from "child_process";
 let pyshell = new PythonShell("connect.py");
 
 const useStyles = makeStyles(theme => ({
@@ -29,6 +29,11 @@ pyshell.on("close", function(message) {
   console.log(message);
   pyshell = new PythonShell("connect.py");
 });
+pyshell.on("error", function(message) {
+  console.log("stream error");
+  console.log(message);
+  pyshell = new PythonShell("connect.py");
+});
 
 export default function ConfigPicker(props) {
   //getInfo();
@@ -41,6 +46,7 @@ export default function ConfigPicker(props) {
   function handleChange(event) {
     getInfo();
     setInfo();
+
     setMode(event.target.value);
   }
 
@@ -54,44 +60,36 @@ export default function ConfigPicker(props) {
 
   function getInfo() {
     console.log("get info");
-    pyshell.once("message", function(message) {
-      let messageJson = JSON.parse(message);
-      console.log(messageJson);
-      console.log(messageJson.response.Camera.Param[0].DayNightColor);
-      setConfig(messageJson.response);
-      console.log(config);
-      let dayNight = messageJson.response.Camera.Param[0].DayNightColor;
+    try {
+      pyshell.once("message", function(message) {
+        let messageJson = JSON.parse(message);
+        console.log(messageJson);
+        console.log(messageJson.response.Camera.Param[0].DayNightColor);
+        setConfig(messageJson.response);
+        console.log(config);
+        let dayNight = messageJson.response.Camera.Param[0].DayNightColor;
 
-      if (dayNight == "0x00000000" || dayNight == "0x0") {
-        setMode("star_ir");
-      } else if (dayNight == "0x00000001" || dayNight == "0x1") {
-        setMode("full_color");
-      } else if (dayNight == "0x00000002" || dayNight == "0x2") {
-        setMode("black_and_white");
-      }
-    });
+        if (dayNight == "0x00000000" || dayNight == "0x0") {
+          setMode("star_ir");
+        } else if (dayNight == "0x00000001" || dayNight == "0x1") {
+          setMode("full_color");
+        } else if (dayNight == "0x00000002" || dayNight == "0x2") {
+          setMode("black_and_white");
+        }
+      });
+    } catch (e) {
+      console.log("stream error");
+      pyshell = new PythonShell("connect.py");
+    }
     let response = pyshell.send("camera get");
   }
   function setInfo() {
     console.log(mode);
-    if (config) {
-      let dayNight;
-      if (mode == "star_ir") {
-        dayNight = "0x00000000";
-      } else if (mode == "full_color") {
-        dayNight = "0x00000001";
-      } else {
-        dayNight = "0x00000002";
-      }
-      config.Camera.Param[0].DayNightColor = dayNight;
-      console.log("sent config");
-      console.log(config);
 
-      pyshell.send("camera set");
-      pyshell.send("day_night");
+    pyshell.send("camera set");
+    pyshell.send("day_night");
 
-      pyshell.send(dayNight);
-    }
+    pyshell.send(mode);
   }
   return (
     <form autoComplete="off">
