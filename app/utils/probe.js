@@ -233,7 +233,7 @@ const probe = (parentThis) => {
     probeWs(parentThis, 'admin', 'tlJwpbo6');
 
     console.log("Probing ONVIF using IP range");
-    const options = { IP_RANGE_START: '192.168.1.1', IP_RANGE_END: '192.168.1.254', PORT_LIST: [80, 7575, 8000, 8080, 8081, 8899], USERNAME: 'admin', PASSWORD: 'tlJwpbo6' };
+    const options = { IP_RANGE_START: '192.168.2.1', IP_RANGE_END: '192.168.2.254', PORT_LIST: [80, 7575, 8000, 8080, 8081, 8899], USERNAME: 'admin', PASSWORD: 'tlJwpbo6' };
     probeRange(parentThis, options);
 
 }

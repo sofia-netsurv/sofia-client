@@ -48,7 +48,7 @@ export default function ConfigPicker(props) {
   function getInfo() {
     console.log(mode);
     exec(
-      "python3 connect.py 192.168.1.156 get Camera",
+      "python3 connect.py 192.168.2.138 get Camera",
       (err, stdout, stderr) => {
         if (err) {
           console.error(err);
@@ -65,9 +65,8 @@ export default function ConfigPicker(props) {
       setMode("black_and_white");
     } */
   }
-  function setInfo(setMode) {
+  function setInfo(newMode) {
     let returnVal = false;
-    console.log(mode);
     let val;
     if (setMode == "star_ir") {
       val = "0x0";
@@ -77,17 +76,22 @@ export default function ConfigPicker(props) {
       val = "0x2";
     }
     exec(
-      "python3 connect.py 192.168.1.156 set Camera DayNightColor " + val,
+      "python3 connect.py 192.168.2.138 set Camera DayNightColor " + val,
       (err, stdout, stderr) => {
         if (err) {
           console.error(err);
         }
+        console.log(stdout)
+        if (!stdout) {
+            return false;
+        }
         const response = JSON.parse(stdout);
-        return true;
         returnVal = response["success"];
+        if (returnVal) {
+          setMode(newMode);
+        }
       }
     );
-    return returnVal;
   }
   return (
     <form autoComplete="off">
