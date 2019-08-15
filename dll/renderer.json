@@ -1,8 +1,8 @@
 {
   "name": "renderer",
   "content": {
-    "jsmpeg-player": {
-      "id": "jsmpeg-player",
+    "@fortawesome/fontawesome-free": {
+      "id": "@fortawesome/fontawesome-free",
       "buildMeta": { "providedExports": true }
     },
     "@material-ui/core": {
@@ -43,8 +43,8 @@
     "history": { "id": "history", "buildMeta": { "providedExports": true } },
     "install": { "id": "install", "buildMeta": { "providedExports": true } },
     "jsmpeg": { "id": "jsmpeg", "buildMeta": { "providedExports": true } },
-    "@fortawesome/fontawesome-free": {
-      "id": "@fortawesome/fontawesome-free",
+    "jsmpeg-player": {
+      "id": "jsmpeg-player",
       "buildMeta": { "providedExports": true }
     },
     "nimble": { "id": "nimble", "buildMeta": { "providedExports": true } },

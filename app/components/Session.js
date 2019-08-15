@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-// @flow
 import React from "react";
 import jsmpeg from "jsmpeg";
 import Stream from "node-rtsp-stream";
