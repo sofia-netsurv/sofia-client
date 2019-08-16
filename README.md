@@ -22,6 +22,10 @@ ffmpeg is required for viewing the stream, to install on Debian based distros
 
     sudo apt install ffmpeg
     
+python netsurv is required for altering the config of the camera, to install it on any distributions
+
+    pip install netsurv
+    
 To run the program
 
     yarn start
