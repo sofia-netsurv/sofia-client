@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ConfigGeneral(props) {
+export default function ConfigCamera(props) {
   const ip = props.ip;
   console.log("general ip", props.ip)
   const classes = useStyles();

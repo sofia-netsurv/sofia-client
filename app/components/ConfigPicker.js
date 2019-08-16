@@ -43,7 +43,7 @@ export default function ConfigPicker(props) {
   function getInfo() {
     console.log(mode);
     exec(
-      "python3 connect.py " + ip + " get " + props.settingsProfile + "Camera",
+      "python3 connect.py " + ip + " get " + props.settingsProfile,
       (err, stdout, stderr) => {
         if (err) {
           console.error(err);

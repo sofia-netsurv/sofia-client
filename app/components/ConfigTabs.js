@@ -19,6 +19,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import ConfigGeneral from "../components/ConfigGeneral";
+import ConfigCamera from "../components/ConfigCamera";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -94,7 +95,7 @@ export default function ConfigTabs(props) {
         <ConfigGeneral ip={ip} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <ConfigCamera ip={ip} />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
