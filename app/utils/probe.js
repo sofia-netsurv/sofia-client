@@ -1,7 +1,7 @@
-import onvif from "onvif";
-import { http } from "http";
-import { Cam } from "onvif";
-import flow from "nimble";
+import onvif from 'onvif';
+import { http } from 'http';
+import { Cam } from 'onvif';
+import flow from 'nimble';
 
 const probeRange = (parentThis, options) => {
   var IP_RANGE_START = options.IP_RANGE_START;
@@ -62,8 +62,8 @@ const probeRange = (parentThis, options) => {
               try {
                 cam_obj.getStreamUri(
                   {
-                    protocol: "RTSP",
-                    stream: "RTP-Unicast"
+                    protocol: 'RTSP',
+                    stream: 'RTP-Unicast'
                   },
                   function(err, stream, xml) {
                     if (!err) got_live_stream_tcp = stream;
@@ -78,8 +78,8 @@ const probeRange = (parentThis, options) => {
               try {
                 cam_obj.getStreamUri(
                   {
-                    protocol: "UDP",
-                    stream: "RTP-Unicast"
+                    protocol: 'UDP',
+                    stream: 'RTP-Unicast'
                   },
                   function(err, stream, xml) {
                     if (!err) got_live_stream_udp = stream;
@@ -94,8 +94,8 @@ const probeRange = (parentThis, options) => {
               try {
                 cam_obj.getStreamUri(
                   {
-                    protocol: "UDP",
-                    stream: "RTP-Multicast"
+                    protocol: 'UDP',
+                    stream: 'RTP-Multicast'
                   },
                   function(err, stream, xml) {
                     if (!err) got_live_stream_multicast = stream;
@@ -117,7 +117,7 @@ const probeRange = (parentThis, options) => {
               if (got_recordings) {
                 cam_obj.getReplayUri(
                   {
-                    protocol: "RTSP",
+                    protocol: 'RTSP',
                     recordingToken: got_recordings[0].recordingToken
                   },
                   function(err, stream, xml) {
@@ -130,30 +130,30 @@ const probeRange = (parentThis, options) => {
               }
             },
             function(callback) {
-              console.log("------------------------------");
-              console.log("Host: " + ip_entry + " Port: " + port_entry);
-              console.log("Date: = " + got_date);
-              console.log("Info: = " + JSON.stringify(got_info));
+              console.log('------------------------------');
+              console.log('Host: ' + ip_entry + ' Port: ' + port_entry);
+              console.log('Date: = ' + got_date);
+              console.log('Info: = ' + JSON.stringify(got_info));
               if (got_live_stream_tcp) {
                 console.log(
-                  "First Live TCP Stream: =       " + got_live_stream_tcp.uri
+                  'First Live TCP Stream: =       ' + got_live_stream_tcp.uri
                 );
               }
               if (got_live_stream_udp) {
                 console.log(
-                  "First Live UDP Stream: =       " + got_live_stream_udp.uri
+                  'First Live UDP Stream: =       ' + got_live_stream_udp.uri
                 );
               }
               if (got_live_stream_multicast) {
                 console.log(
-                  "First Live Multicast Stream: = " +
+                  'First Live Multicast Stream: = ' +
                     got_live_stream_multicast.uri
                 );
               }
               if (got_replay_stream) {
-                console.log("First Replay Stream: = " + got_replay_stream.uri);
+                console.log('First Replay Stream: = ' + got_replay_stream.uri);
               }
-              console.log("------------------------------");
+              console.log('------------------------------');
 
               let camFound = parentThis.state.detectedDevices.find(function(
                 element
@@ -196,7 +196,7 @@ function generate_range(start_ip, end_ip) {
 //toLong taken from NPM package 'ip'
 function toLong(ip) {
   var ipl = 0;
-  ip.split(".").forEach(function(octet) {
+  ip.split('.').forEach(function(octet) {
     ipl <<= 8;
     ipl += parseInt(octet);
   });
@@ -207,17 +207,17 @@ function toLong(ip) {
 function fromLong(ipl) {
   return (
     (ipl >>> 24) +
-    "." +
+    '.' +
     ((ipl >> 16) & 255) +
-    "." +
+    '.' +
     ((ipl >> 8) & 255) +
-    "." +
+    '.' +
     (ipl & 255)
   );
 }
 
 const probeWs = (parentThis, username, password) => {
-  onvif.Discovery.on("device", function(cam, rinfo, xml) {
+  onvif.Discovery.on('device', function(cam, rinfo, xml) {
     let rtsp_cam = new Cam(
       {
         hostname: cam.hostname,
@@ -227,7 +227,7 @@ const probeWs = (parentThis, username, password) => {
       },
       function(err) {
         let camThis = this;
-        this.getStreamUri({ protocol: "RTSP" }, function(err, stream) {
+        this.getStreamUri({ protocol: 'RTSP' }, function(err, stream) {
           let got_info;
           camThis.getDeviceInformation(function(err, info, xml) {
             if (!err) got_info = info;
@@ -255,16 +255,16 @@ const probeWs = (parentThis, username, password) => {
 };
 
 const probe = parentThis => {
-  console.log("Probing ONVIF using ws-discovery");
-  probeWs(parentThis, "admin", "tlJwpbo6");
+  console.log('Probing ONVIF using ws-discovery');
+  probeWs(parentThis, 'admin', 'tlJwpbo6');
 
-  console.log("Probing ONVIF using IP range");
+  console.log('Probing ONVIF using IP range');
   const options = {
-    IP_RANGE_START: "192.168.2.1",
-    IP_RANGE_END: "192.168.2.254",
+    IP_RANGE_START: '192.168.2.1',
+    IP_RANGE_END: '192.168.2.254',
     PORT_LIST: [80, 7575, 8000, 8080, 8081, 8899],
-    USERNAME: "admin",
-    PASSWORD: "tlJwpbo6"
+    USERNAME: 'admin',
+    PASSWORD: 'tlJwpbo6'
   };
   probeRange(parentThis, options);
 };

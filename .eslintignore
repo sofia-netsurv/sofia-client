@@ -2,3 +2,4 @@ flow-typed/*.js
 
 jsmpeg.min.js
 app/jsmpeg.min.js
+app/material-ui.development.js

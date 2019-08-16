@@ -1,25 +1,25 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import TvIcon from "@material-ui/icons/Tv";
-import SettingsIcon from "@material-ui/icons/Settings";
-import SettingsEthernetIcon from "@material-ui/icons/SettingsEthernet";
-import PolymerIcon from "@material-ui/icons/Polymer";
-import Input from "@material-ui/core/Input";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import FilledInput from "@material-ui/core/FilledInput";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import ConfigGeneral from "../components/ConfigGeneral";
-import ConfigCamera from "../components/ConfigCamera";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import TvIcon from '@material-ui/icons/Tv';
+import SettingsIcon from '@material-ui/icons/Settings';
+import SettingsEthernetIcon from '@material-ui/icons/SettingsEthernet';
+import PolymerIcon from '@material-ui/icons/Polymer';
+import Input from '@material-ui/core/Input';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import FilledInput from '@material-ui/core/FilledInput';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import ConfigGeneral from '../components/ConfigGeneral';
+import ConfigCamera from '../components/ConfigCamera';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,7 +47,7 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`
+    'aria-controls': `simple-tabpanel-${index}`
   };
 }
 
@@ -57,7 +57,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper
   },
   tabs: {
-    inkBarContainerStyle: { background: "white" }
+    inkBarContainerStyle: { background: 'white' }
   }
 }));
 
@@ -65,7 +65,7 @@ export default function ConfigTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const ip = props.ip;
-  console.log("tabs ip", ip);
+  console.log('tabs ip', ip);
   function handleChange(event, newValue) {
     setValue(newValue);
   }
@@ -97,10 +97,8 @@ export default function ConfigTabs(props) {
         <ConfigCamera ip={ip} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Item F
       </TabPanel>
     </div>
   );

@@ -1,17 +1,17 @@
-import React from "react";
-import jsmpeg from "jsmpeg";
-import Stream from "node-rtsp-stream";
+import React from 'react';
+import jsmpeg from 'jsmpeg';
+import Stream from 'node-rtsp-stream';
 
-import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
-import routes from "../constants/routes";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import VideocamIcon from "@material-ui/icons/VideocamOutlined";
-import ConfigTabs from "../components/ConfigTabs";
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
+import routes from '../constants/routes';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import VideocamIcon from '@material-ui/icons/VideocamOutlined';
+import ConfigTabs from '../components/ConfigTabs';
 
 export default class Config extends React.Component {
   constructor(props) {

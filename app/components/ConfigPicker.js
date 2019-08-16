@@ -1,16 +1,16 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import Button from "@material-ui/core/Button";
-import { PythonShell } from "python-shell";
-import { exec } from "child_process";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
+import { PythonShell } from 'python-shell';
+import { exec } from 'child_process';
 
 const useStyles = makeStyles(theme => ({
   button: {
-    display: "block",
+    display: 'block',
     marginTop: theme.spacing(2)
   },
   formControl: {
@@ -22,8 +22,8 @@ const useStyles = makeStyles(theme => ({
 export default function ConfigPicker(props) {
   //getInfo();
   const classes = useStyles();
-  const [mode, setMode] = React.useState("");
-  const [config, setConfig] = React.useState("");
+  const [mode, setMode] = React.useState('');
+  const [config, setConfig] = React.useState('');
   const ip = props.ip;
   const [open, setOpen] = React.useState(false);
 
@@ -43,7 +43,7 @@ export default function ConfigPicker(props) {
   function getInfo() {
     console.log(mode);
     exec(
-      "python3 connect.py " + ip + " get " + props.settingsProfile,
+      'python3 connect.py ' + ip + ' get ' + props.settingsProfile,
       (err, stdout, stderr) => {
         if (err) {
           console.error(err);
@@ -63,13 +63,13 @@ export default function ConfigPicker(props) {
     console.log(props.settingsProfile);
     console.log(props.settingsName);
     exec(
-      "python3 connect.py " +
+      'python3 connect.py ' +
         ip +
-        " set " +
+        ' set ' +
         props.settingsProfile +
-        " " +
+        ' ' +
         props.settingsName +
-        " " +
+        ' ' +
         val,
       (err, stdout, stderr) => {
         if (err) {
@@ -80,7 +80,7 @@ export default function ConfigPicker(props) {
           return false;
         }
         const response = JSON.parse(stdout);
-        returnVal = response["success"];
+        returnVal = response['success'];
         if (returnVal) {
           setMode(newMode);
         }
@@ -100,8 +100,8 @@ export default function ConfigPicker(props) {
           value={mode}
           onChange={handleChange}
           inputProps={{
-            name: "age",
-            id: "demo-controlled-open-select"
+            name: 'age',
+            id: 'demo-controlled-open-select'
           }}
         >
           {props.configOptions.map((item, i) => (
