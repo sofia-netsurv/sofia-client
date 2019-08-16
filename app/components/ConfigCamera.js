@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function ConfigCamera(props) {
   const ip = props.ip;
-  console.log("general ip", props.ip)
+  console.log("general ip", props.ip);
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -49,7 +49,31 @@ export default function ConfigCamera(props) {
 
   return (
     <div>
-
+      <ConfigPicker
+        ip={ip}
+        configType="dropdown"
+        configLabel="Day/Night mode"
+        configValue="star_ir"
+        settingsProfile="Camera"
+        settingsName="DayNightColor"
+        configOptions={[
+          { label: "Star IR", value: "star_ir", setting: "0x0" },
+          { label: "Full Color", value: "full_color", setting: "0x1" },
+          { label: "Black & White", value: "black_and_white", setting: "0x2" }
+        ]}
+      />
+      <ConfigPicker
+        ip={ip}
+        configType="dropdown"
+        configLabel="Picture Flip"
+        configValue="disabled"
+        settingsProfile="Camera"
+        settingsName="PictureFlip"
+        configOptions={[
+          { label: "Enabled", value: "enabled", setting: "0x0" },
+          { label: "Disabled", value: "disabled", setting: "0x1" }
+        ]}
+      />
     </div>
   );
 }

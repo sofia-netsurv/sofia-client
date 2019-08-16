@@ -55,24 +55,29 @@ export default function ConfigPicker(props) {
   function setInfo(newMode) {
     let returnVal = false;
     let val;
-  
-
 
     let obj = props.configOptions.find(obj => obj.value == newMode);
 
     console.log(obj);
     val = obj.setting;
-    console.log(props.settingsProfile)
-    console.log(props.settingsName)
+    console.log(props.settingsProfile);
+    console.log(props.settingsName);
     exec(
-      "python3 connect.py " + ip + " set " + props.settingsProfile + " " + props.settingsName + " " + val,
+      "python3 connect.py " +
+        ip +
+        " set " +
+        props.settingsProfile +
+        " " +
+        props.settingsName +
+        " " +
+        val,
       (err, stdout, stderr) => {
         if (err) {
           console.error(err);
         }
-        console.log(stdout)
+        console.log(stdout);
         if (!stdout) {
-            return false;
+          return false;
         }
         const response = JSON.parse(stdout);
         returnVal = response["success"];

@@ -54,7 +54,6 @@ class Home extends Component {
           Select Camera
         </Typography>
         <CamPicker />
-
       </>
     );
   }

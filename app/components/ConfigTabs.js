@@ -10,14 +10,14 @@ import TvIcon from "@material-ui/icons/Tv";
 import SettingsIcon from "@material-ui/icons/Settings";
 import SettingsEthernetIcon from "@material-ui/icons/SettingsEthernet";
 import PolymerIcon from "@material-ui/icons/Polymer";
-import Input from '@material-ui/core/Input';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import FilledInput from '@material-ui/core/FilledInput';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import Input from "@material-ui/core/Input";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import FilledInput from "@material-ui/core/FilledInput";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 import ConfigGeneral from "../components/ConfigGeneral";
 import ConfigCamera from "../components/ConfigCamera";
 
@@ -65,7 +65,7 @@ export default function ConfigTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const ip = props.ip;
-  console.log("tabs ip", ip)
+  console.log("tabs ip", ip);
   function handleChange(event, newValue) {
     setValue(newValue);
   }
@@ -91,7 +91,6 @@ export default function ConfigTabs(props) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-             
         <ConfigGeneral ip={ip} />
       </TabPanel>
       <TabPanel value={value} index={1}>
