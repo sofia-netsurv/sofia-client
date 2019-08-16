@@ -62,9 +62,10 @@ export default function ConfigPicker(props) {
 
     console.log(obj);
     val = obj.setting;
-    
+    console.log(props.settingsProfile)
+    console.log(props.settingsName)
     exec(
-      "python3 connect.py " + ip + " set " + props.settingsProfile + " DayNightColor " + val,
+      "python3 connect.py " + ip + " set " + props.settingsProfile + " " + props.settingsName + " " + val,
       (err, stdout, stderr) => {
         if (err) {
           console.error(err);
