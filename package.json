@@ -1,8 +1,8 @@
 {
-  "name": "electron-react-boilerplate",
+  "name": "sofia-netsurv",
   "productName": "ElectronReact",
-  "version": "0.17.1",
-  "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
+  "version": "0.0.1",
+  "description": "Cross-platform Electron client for viewing and configuring Sofia/DVRIP protocol IP cameras ",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
     "build-dll": "cross-env NODE_ENV=development webpack --config ./configs/webpack.config.renderer.dev.dll.babel.js --colors",
@@ -96,37 +96,47 @@
     },
     "publish": {
       "provider": "github",
-      "owner": "electron-react-boilerplate",
-      "repo": "electron-react-boilerplate",
+      "owner": "sofia-netsurv",
+      "repo": "sofia-netsurv",
       "private": false
     }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/electron-react-boilerplate/electron-react-boilerplate.git"
+    "url": "git+https://github.com/sofia-netsurv/sofia-client"
   },
   "author": {
-    "name": "Electron React Boilerplate Maintainers",
-    "email": "electronreactboilerplate@gmail.com",
-    "url": "https://electron-react-boilerplate.js.org"
+    "name": "Sofia Netsurv Maintainers",
+    "email": "eliot@woodrich.com",
+    "url": "https://github.com/sofia-netsurv"
   },
   "contributors": [
     {
-      "name": "Vikram Rangaraj",
-      "email": "vikr01@icloud.com",
-      "url": "https://github.com/vikr01"
+      "name": "Eliot Woodrich",
+      "email": "eliot@woodrich.com",
+      "url": "https://github.com/ekwoodrich"
     },
     {
-      "name": "Amila Welihinda",
-      "email": "amilajack@gmail.com",
-      "url": "https://github.com/amilajack"
+      "name": "Ebraheem AlAthari",
+      "email": "23537510+plavabe12@users.noreply.github.com",
+      "url": "https://github.com/plavabe12"
     }
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues"
+    "url": "https://github.com/sofia-netsurv/sofia-client/issues"
   },
   "keywords": [
+    "ipcamera",
+    "onvif",
+    "hi3518e",
+    "hi3518c",
+    "cctv",
+    "sricam",
+    "xmeye",
+    "netsurveillance",
+    "dvrip",
+    "sofia" ,
     "electron",
     "boilerplate",
     "react",
@@ -136,7 +146,7 @@
     "hot",
     "reload"
   ],
-  "homepage": "https://github.com/electron-react-boilerplate/electron-react-boilerplate#readme",
+  "homepage": "https://github.com/sofia-netsurv/sofia-client",
   "jest": {
     "testURL": "http://localhost/",
     "moduleNameMapper": {
@@ -288,9 +298,6 @@
     "node": ">=7.x",
     "npm": ">=4.x",
     "yarn": ">=0.21.3"
-  },
-  "collective": {
-    "url": "https://opencollective.com/electron-react-boilerplate-594"
   },
   "browserslist": "electron 1.6",
   "husky": {
