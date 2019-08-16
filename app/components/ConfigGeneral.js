@@ -72,7 +72,7 @@ export default function ConfigGeneral(props) {
 
   return (
     <div>
-        <ConfigPicker ip={ip} configType="dropdown" configLabel="Day/Night mode" configValue = "star_ir" configOptions = {[{ 'label' : 'Star IR', 'value' : 'star_ir', 'setting' : '0x0'}, { 'label' : 'Full Color', 'value' : 'full_color', 'setting' : '0x1'},{ 'label' : 'Black & White', 'value' : 'black_and_white', 'setting' : '0x2'}]}/> 
+        <ConfigPicker ip={ip} configType="dropdown" configLabel="Day/Night mode" configValue = "star_ir" settingsProfile = "Camera" configOptions = {[{ 'label' : 'Star IR', 'value' : 'star_ir', 'setting' : '0x0'}, { 'label' : 'Full Color', 'value' : 'full_color', 'setting' : '0x1'},{ 'label' : 'Black & White', 'value' : 'black_and_white', 'setting' : '0x2'}]}/> 
 
     </div>
   );
