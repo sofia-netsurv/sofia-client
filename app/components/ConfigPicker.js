@@ -24,8 +24,9 @@ export default function ConfigPicker(props) {
   const classes = useStyles();
   const [mode, setMode] = React.useState("");
   const [config, setConfig] = React.useState("");
-
+  const ip = props.ip;
   const [open, setOpen] = React.useState(false);
+  console.log('picker ip', ip);
 
   function handleChange(event) {
     getInfo();
@@ -48,7 +49,7 @@ export default function ConfigPicker(props) {
   function getInfo() {
     console.log(mode);
     exec(
-      "python3 connect.py 192.168.2.138 get Camera",
+      "python3 connect.py " + ip + " get Camera",
       (err, stdout, stderr) => {
         if (err) {
           console.error(err);
@@ -68,13 +69,14 @@ export default function ConfigPicker(props) {
   function setInfo(newMode) {
     let returnVal = false;
     let val;
-    if (setMode == "star_ir") {
-      val = "0x0";
-    } else if (setMode == "full_color") {
-      val = "0x1";
-    } else {
-      val = "0x2";
-    }
+  
+
+
+    let obj = props.configOptions.find(obj => obj.value == newMode);
+
+    console.log(obj);
+    val = obj.setting;
+    
     exec(
       "python3 connect.py 192.168.2.138 set Camera DayNightColor " + val,
       (err, stdout, stderr) => {

@@ -27,7 +27,7 @@ export default class Config extends React.Component {
           <VideocamIcon />
           {this.props.location.state.ip}
         </h2>
-        <ConfigTabs />
+        <ConfigTabs ip={this.props.location.state.ip}/>
         <Button
           component={Link}
           to={{

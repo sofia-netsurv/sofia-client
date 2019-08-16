@@ -60,10 +60,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ConfigTabs() {
+export default function ConfigTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-
+  const ip = props.ip;
+  console.log("tabs ip", ip)
   function handleChange(event, newValue) {
     setValue(newValue);
   }
@@ -90,7 +91,7 @@ export default function ConfigTabs() {
       </AppBar>
       <TabPanel value={value} index={0}>
              
-        <ConfigGeneral/>
+        <ConfigGeneral ip={ip} />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two

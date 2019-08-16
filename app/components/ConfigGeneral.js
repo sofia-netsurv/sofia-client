@@ -22,7 +22,7 @@ import ConfigPicker from "../components/ConfigPicker";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
+  const ip = props.ip;
   return (
     <Typography
       component="div"
@@ -60,7 +60,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ConfigTabs() {
+export default function ConfigGeneral(props) {
+  const ip = props.ip;
+  console.log("general ip", props.ip)
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -70,7 +72,7 @@ export default function ConfigTabs() {
 
   return (
     <div>
-        <ConfigPicker configType="dropdown" configLabel="Day/Night mode" configValue = "star_ir" configOptions = {[{ 'label' : 'Star IR', 'value' : 'star_ir'}, { 'label' : 'Full Color', 'value' : 'full_color'},{ 'label' : 'Black & White', 'value' : 'black_and_white'}]}/> 
+        <ConfigPicker ip={ip} configType="dropdown" configLabel="Day/Night mode" configValue = "star_ir" configOptions = {[{ 'label' : 'Star IR', 'value' : 'star_ir', 'setting' : '0x0'}, { 'label' : 'Full Color', 'value' : 'full_color', 'setting' : '0x1'},{ 'label' : 'Black & White', 'value' : 'black_and_white', 'setting' : '0x2'}]}/> 
 
     </div>
   );
